@@ -34,12 +34,25 @@ def save_weather(temp: float):
     return "Successfully wrote temp"
 
 
-@flow(retries=3, name='sander_pipeline')
-def pipeline(lat: float, lon: float):
+@flow(retries=3)
+def pipeline(lat: float = 54.0, lon: float = 23.0):
     temp = fetch_weather(lat, lon)
     result = save_weather(temp)
     create_markdown(temp)
     return result
+
+@flow(log_prints=True, retries=3)
+def pipeline_2(lat: float = 54.0, lon: float = 23.0):
+    temp = fetch_weather(lat, lon)
+    result = save_weather(temp)
+    create_markdown(temp)
+    return result
+
+@flow(log_prints=True, retries=2)
+def calculate_both_weather_stuff(lat: float = 54.0, lon: float = 23.0):
+    temp1 = pipeline(lat, lon)
+    temp2 = pipeline_2(lat-3, lon-4)
+    print(f'the temperatures are the following {temp1} and {temp2}')
 
 
 # if __name__ == "__main__":
