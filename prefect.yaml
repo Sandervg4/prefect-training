@@ -1,0 +1,36 @@
+# Welcome to your prefect.yaml file! You can use this file for storing and managing
+# configuration for deploying your flows. We recommend committing this file to source
+# control along with your flow code.
+
+# Generic metadata about this project
+name: prefect
+prefect-version: 2.13.0
+
+# build section allows you to manage and build docker images
+build: null
+
+# push section allows you to manage if and how this project is uploaded to remote locations
+push: null
+
+# pull section allows you to provide instructions for cloning this project in remote locations
+pull:
+- prefect.deployments.steps.git_clone:
+    repository: https://github.com/Sandervg4/prefect-training.git
+    branch: master
+
+# the deployments section allows you to provide configuration for deploying flows
+deployments:
+- name: deployment_sander
+  version: null
+  tags: []
+  description: null
+  entrypoint: pacc-online-2023\101\weather2-tasks.py:pipeline
+  parameters: {}
+  work_pool:
+    name: work_pool_sander
+    work_queue_name: null
+    job_variables: {}
+  schedule:
+    interval: 3600.0
+    anchor_date: '2023-09-14T13:36:04.060613+00:00'
+    timezone: UTC

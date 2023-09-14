@@ -42,5 +42,5 @@ def pipeline(lat: float, lon: float):
     return result
 
 
-if __name__ == "__main__":
-    pipeline.serve(name='flow_sander')
+# if __name__ == "__main__":
+#     pipeline.serve(name='flow_sander')
