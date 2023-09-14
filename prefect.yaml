@@ -7,10 +7,10 @@ name: prefect
 prefect-version: 2.13.0
 
 # build section allows you to manage and build docker images
-build: null
+build:
 
 # push section allows you to manage if and how this project is uploaded to remote locations
-push: null
+push:
 
 # pull section allows you to provide instructions for cloning this project in remote locations
 pull:
@@ -21,16 +21,30 @@ pull:
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
 - name: deployment_sander
-  version: null
+  version:
   tags: []
-  description: null
+  description:
   entrypoint: pacc-online-2023\101\weather2-tasks.py:pipeline
-  parameters: {"lat": 54, "lon": 39}
+  parameters: {lat: 54, lon: 39}
   work_pool:
     name: work_pool_sander
-    work_queue_name: null
+    work_queue_name:
     job_variables: {}
   schedule:
     interval: 3600.0
     anchor_date: '2023-09-14T13:36:04.060613+00:00'
     timezone: UTC
+- name: subflowz_sander
+  version:
+  tags: []
+  description:
+  entrypoint: pacc-online-2023\101\weather2-tasks.py:pipeline
+  parameters: {"lat": 54, "lon": 23}
+  work_pool:
+    name: work_pool_sander
+    work_queue_name:
+    job_variables: {}
+  schedule:
+    cron: 0 0 * * *
+    timezone: UTC
+    day_or: true
