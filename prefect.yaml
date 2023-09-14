@@ -25,7 +25,7 @@ deployments:
   tags: []
   description: null
   entrypoint: pacc-online-2023\101\weather2-tasks.py:pipeline
-  parameters: {}
+  parameters: {"lat": 54, "lon": 13}
   work_pool:
     name: work_pool_sander
     work_queue_name: null
