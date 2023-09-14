@@ -38,7 +38,7 @@ deployments:
   version:
   tags: []
   description:
-  entrypoint: pacc-online-2023\101\weather2-tasks.py:pipeline
+  entrypoint: pacc-online-2023\101\weather2-tasks.py:calculate_both_weather_stuff
   parameters: {"lat": 54, "lon": 23}
   work_pool:
     name: work_pool_sander
